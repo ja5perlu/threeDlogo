@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Logo Interactive Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <!-- Canvas 容器 -->
+        <div id="canvas-container"></div>
+
+        <!-- Loading 畫面 -->
+        <div id="loading-screen">
+            <div class="spinner"></div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="loading-text">loading 3D scene</div>
+            <div class="loading-percent" id="loading-percent">0%</div>
+        </div>
+
+        <!-- 性能監控面板 -->
+        <div class="info-panel">
+            <h3>效能監控</h3>
+            <div>FPS：<span id="fps-display" class="fps-good">60</span></div>
+            <div class="info-hint">將滑鼠懸停於標誌上以加速旋轉</div>
+        </div>
+
+        <!-- 特效說明 -->
+        <div class="features-panel">
+            <h4>功能</h4>
+            <ul>
+                <li>具有緩動效果的平滑旋轉動畫</li>
+                <li>滑鼠懸停互動並漸進變速</li>
+                <li>粒子系統視覺特效</li>
+                <li>動態光源與陰影</li>
+                <li>即時 FPS 監測</li>
+                <li>具有反射效果的金屬材質</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- 主程式 -->
+    <script src="main.js"></script>
+</body>
+
+</html>
