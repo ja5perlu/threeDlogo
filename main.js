@@ -140,6 +140,24 @@ function init() {
     renderer.outputEncoding = THREE.sRGBEncoding;
     canvasContainer.appendChild(renderer.domElement);
 
+    // Prevent mobile long-press text selection / context menu on the canvas
+    // - CSS handles most cases, but add JS fallbacks for legacy/other browsers
+    // - Only prevent default on the canvas/container to avoid blocking page gestures
+    try {
+        renderer.domElement.addEventListener('contextmenu', (e) => e.preventDefault());
+        renderer.domElement.addEventListener('selectstart', (e) => e.preventDefault());
+
+        // Prevent contextmenu coming from touch long-press (covers some Android browsers)
+        window.addEventListener('contextmenu', (e) => {
+            if (e.target === renderer.domElement || canvasContainer.contains(e.target)) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    } catch (err) {
+        // If renderer is not ready or browser blocks, silently ignore
+        console.warn('Could not attach long-press prevention listeners:', err);
+    }
+
     // 創建 Logo
     createLogo();
 
